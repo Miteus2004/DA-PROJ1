@@ -1,8 +1,7 @@
 #include "FileReader.h"
 
-void FileReader::readReservoirs()
-{
-    std::ifstream file("../dataset/Reservoir.csv");
+void FileReader::readReservoirs() {
+    std::ifstream file("../Project1DataSetSmall/Reservoir_Madeira.csv");
 
     if(!file.is_open())
     {
@@ -35,7 +34,7 @@ void FileReader::readReservoirs()
 
 void FileReader::readStations()
 {
-    std::ifstream file("../dataset/Stations.csv");
+    std::ifstream file("../Project1DataSetSmall/Stations_Madeira.csv");
 
     if(!file.is_open())
     {
@@ -63,9 +62,8 @@ void FileReader::readStations()
     }
 }
 
-void FileReader::readCities()
-{
-    std::ifstream file("../dataset/Cities.csv");
+void FileReader::readCities() {
+    std::ifstream file("../Project1DataSetSmall/Cities_Madeira.csv");
 
     if(!file.is_open())
     {
@@ -87,7 +85,7 @@ void FileReader::readCities()
             getline(ss, demand, ',');
             getline(ss, population, '\r');
 
-            auto city = new City(name, stoi(id),code, stoi(demand), stoi(population));
+            auto city = new City(name, stoi(id), code, stoi(demand), stoi(population));
 
             cities[code] = city;
             Points[code] = city;
@@ -97,9 +95,8 @@ void FileReader::readCities()
 }
 
 
-void FileReader::readPipes()
-{
-    std::ifstream file("../dataset/Pipes.csv");
+void FileReader::readPipes() {
+    std::ifstream file("../Project1DataSetSmall/Pipes_Madeira.csv");
 
     if(!file.is_open())
     {
@@ -126,4 +123,29 @@ void FileReader::readPipes()
                 flow.addEdge(Points[source], Points[destination], stoi(capacity));
         }
     }
+}
+
+void FileReader::read() {
+    readStations();
+    readCities();
+    readReservoirs();
+    readPipes();
+}
+
+unordered_map<string, Reservoir*> FileReader::getReservoirs() {
+    return reservoirs;
+}
+
+unordered_map<string, Station*> FileReader::getStations() {
+    return stations;
+}
+
+unordered_map<string, City*> FileReader::getCities() {
+    return cities;
+}
+unordered_map<string, Point*> FileReader::getPoints() {
+    return Points;
+}
+Graph<Point> FileReader::getflow() {
+    return flow;
 }

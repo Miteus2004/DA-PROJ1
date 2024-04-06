@@ -8,8 +8,6 @@ add_executable(DA_PROJ1 src/main.cpp
         src/City.h
         src/FileReader.cpp
         src/FileReader.h
-        src/Functions.cpp
-        src/Functions.h
         src/Menu.cpp
         src/Menu.h
         src/Pipe.cpp
@@ -19,4 +17,5 @@ add_executable(DA_PROJ1 src/main.cpp
         src/Reservoir.cpp
         src/Reservoir.h
         src/Station.cpp
-        src/Station.h)
+        src/Station.h
+        src/EdmondsKarp.h)

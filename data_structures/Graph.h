@@ -6,6 +6,7 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
+#include <unordered_set>
 #include "MutablePriorityQueue.h"
 
 template <class T>
@@ -18,10 +19,10 @@ class Edge;
 template <class T>
 class Vertex {
 public:
-    Vertex(T in);
+    Vertex(T *in);
     bool operator<(Vertex<T> & vertex) const; // // required by MutablePriorityQueue
 
-    T getInfo() const;
+    T *getInfo() const;
     std::vector<Edge<T> *> getAdj() const;
     bool isVisited() const;
     bool isProcessing() const;
@@ -37,12 +38,12 @@ public:
     void setDist(double dist);
     void setPath(Edge<T> *path);
     Edge<T> * addEdge(Vertex<T> *dest, double w);
-    bool removeEdge(T in);
+    bool removeEdge(T *in);
     void removeOutgoingEdges();
 
     friend class MutablePriorityQueue<Vertex>;
 protected:
-    T info;                // info node
+    T *info;                // info node
     std::vector<Edge<T> *> adj;  // outgoing edges
 
     // auxiliary fields
@@ -99,36 +100,36 @@ public:
     /*
     * Auxiliary function to find a vertex with a given the content.
     */
-    Vertex<T> *findVertex(const T &in) const;
+    Vertex<T> *findVertex(T *in) const;
     /*
      *  Adds a vertex with a given content or info (in) to a graph (this).
      *  Returns true if successful, and false if a vertex with that content already exists.
      */
-    bool addVertex(const T &in);
-    bool removeVertex(const T &in);
+    bool addVertex(T *in);
+    bool removeVertex(T *in);
 
     /*
      * Adds an edge to a graph (this), given the contents of the source and
      * destination vertices and the edge weight (w).
      * Returns true if successful, and false if the source or destination vertex does not exist.
      */
-    bool addEdge(const T &sourc, const T &dest, double w);
-    bool removeEdge(const T &source, const T &dest);
-    bool addBidirectionalEdge(const T &sourc, const T &dest, double w);
+    bool addEdge(T *sourc, T *dest, double w);
+    bool removeEdge(T *source, T *dest);
+    bool addBidirectionalEdge(T *sourc, T *dest, double w);
 
     int getNumVertex() const;
     std::vector<Vertex<T> *> getVertexSet() const;
-
+    std::unordered_set<Vertex<T> *> getVertexUnorderedSet() const;
 protected:
     std::vector<Vertex<T> *> vertexSet;    // vertex set
-
+    std::unordered_set<Vertex<T> *> vertexUnorderedSet;
     double ** distMatrix = nullptr;   // dist matrix for Floyd-Warshall
     int **pathMatrix = nullptr;   // path matrix for Floyd-Warshall
 
     /*
      * Finds the index of the vertex with a given content.
      */
-    int findVertexIdx(const T &in) const;
+    int findVertexIdx(const T *in) const;
 };
 
 void deleteMatrix(int **m, int n);
@@ -138,7 +139,7 @@ void deleteMatrix(double **m, int n);
 /************************* Vertex  **************************/
 
 template <class T>
-Vertex<T>::Vertex(T in): info(in) {}
+Vertex<T>::Vertex(T *in): info(in) {}
 /*
  * Auxiliary function to add an outgoing edge to a vertex (this),
  * with a given destination vertex (d) and edge weight (w).
@@ -157,7 +158,7 @@ Edge<T> * Vertex<T>::addEdge(Vertex<T> *d, double w) {
  * Returns true if successful, and false if such edge does not exist.
  */
 template <class T>
-bool Vertex<T>::removeEdge(T in) {
+bool Vertex<T>::removeEdge(T *in) {
     bool removedEdge = false;
     auto it = adj.begin();
     while (it != adj.end()) {
@@ -194,7 +195,7 @@ bool Vertex<T>::operator<(Vertex<T> & vertex) const {
 }
 
 template <class T>
-T Vertex<T>::getInfo() const {
+T *Vertex<T>::getInfo() const {
     return this->info;
 }
 
@@ -330,6 +331,12 @@ void Edge<T>::setFlow(double flow) {
 }
 
 /********************** Graph  ****************************/
+template <class T>
+Graph<T>::~Graph() {
+    for (auto i : vertexSet) {
+        delete i;
+    }
+}
 
 template <class T>
 int Graph<T>::getNumVertex() const {
@@ -341,11 +348,16 @@ std::vector<Vertex<T> *> Graph<T>::getVertexSet() const {
     return vertexSet;
 }
 
+template <class T>
+std::unordered_set<Vertex<T> *> Graph<T>::getVertexUnorderedSet() const {
+    return vertexUnorderedSet;
+}
+
 /*
  * Auxiliary function to find a vertex with a given content.
  */
 template <class T>
-Vertex<T> * Graph<T>::findVertex(const T &in) const {
+Vertex<T> * Graph<T>::findVertex(T *in) const {
     for (auto v : vertexSet)
         if (v->getInfo() == in)
             return v;
@@ -356,7 +368,7 @@ Vertex<T> * Graph<T>::findVertex(const T &in) const {
  * Finds the index of the vertex with a given content.
  */
 template <class T>
-int Graph<T>::findVertexIdx(const T &in) const {
+int Graph<T>::findVertexIdx(const T *in) const {
     for (unsigned i = 0; i < vertexSet.size(); i++)
         if (vertexSet[i]->getInfo() == in)
             return i;
@@ -367,10 +379,12 @@ int Graph<T>::findVertexIdx(const T &in) const {
  *  Returns true if successful, and false if a vertex with that content already exists.
  */
 template <class T>
-bool Graph<T>::addVertex(const T &in) {
+bool Graph<T>::addVertex(T *in) {
     if (findVertex(in) != nullptr)
         return false;
-    vertexSet.push_back(new Vertex<T>(in));
+    Vertex<T> *vtx = new Vertex<T>(in);
+    vertexUnorderedSet.insert(vtx);
+    vertexSet.push_back(vtx);
     return true;
 }
 
@@ -380,7 +394,7 @@ bool Graph<T>::addVertex(const T &in) {
  *  Returns true if successful, and false if such vertex does not exist.
  */
 template <class T>
-bool Graph<T>::removeVertex(const T &in) {
+bool Graph<T>::removeVertex(T *in) {
     for (auto it = vertexSet.begin(); it != vertexSet.end(); it++) {
         if ((*it)->getInfo() == in) {
             auto v = *it;
@@ -402,7 +416,7 @@ bool Graph<T>::removeVertex(const T &in) {
  * Returns true if successful, and false if the source or destination vertex does not exist.
  */
 template <class T>
-bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
+bool Graph<T>::addEdge(T *sourc, T *dest, double w) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == nullptr || v2 == nullptr)
@@ -417,7 +431,7 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
  * Returns true if successful, and false if such edge does not exist.
  */
 template <class T>
-bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
+bool Graph<T>::removeEdge(T *sourc, T *dest) {
     Vertex<T> * srcVertex = findVertex(sourc);
     if (srcVertex == nullptr) {
         return false;
@@ -426,7 +440,7 @@ bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
 }
 
 template <class T>
-bool Graph<T>::addBidirectionalEdge(const T &sourc, const T &dest, double w) {
+bool Graph<T>::addBidirectionalEdge(T *sourc, T *dest, double w) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == nullptr || v2 == nullptr)
