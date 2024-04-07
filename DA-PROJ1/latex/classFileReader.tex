@@ -1,0 +1,178 @@
+\hypertarget{classFileReader}{}\doxysection{File\+Reader Class Reference}
+\label{classFileReader}\index{FileReader@{FileReader}}
+
+
+A class responsible for reading data from files and setting up a graph for the Edmonds-\/\+Karp algorithm.  
+
+
+
+
+{\ttfamily \#include $<$File\+Reader.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFileReader_a615dcb2443cad1f2ca123c7c0c334480}\label{classFileReader_a615dcb2443cad1f2ca123c7c0c334480}} 
+\mbox{\hyperlink{classFileReader_a615dcb2443cad1f2ca123c7c0c334480}{File\+Reader}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classFileReader}{File\+Reader}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileReader_af2ed3daef69a13dea2ff2d0da1dfeb92}{read\+Reservoirs}} ()
+\begin{DoxyCompactList}\small\item\em Read reservoir data from a C\+SV file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileReader_a6fc88fef38e7e71b0c00c842ef166413}{read\+Stations}} ()
+\begin{DoxyCompactList}\small\item\em Read station data from a C\+SV file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileReader_afada7a97ce11e4908e7d0fab1296aebe}{read\+Cities}} ()
+\begin{DoxyCompactList}\small\item\em Read city data from a C\+SV file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileReader_a8172812259e675b81e88695d6d020916}{read\+Pipes}} ()
+\begin{DoxyCompactList}\small\item\em Read pipe data from a C\+SV file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileReader_a1036120d4474f706ec7faab43f2468dc}{read}} ()
+\begin{DoxyCompactList}\small\item\em Read all data from C\+SV files. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classReservoir}{Reservoir}} $\ast$ $>$ \mbox{\hyperlink{classFileReader_a2c2498aafb2f4bee6123b148aee30bae}{get\+Reservoirs}} ()
+\begin{DoxyCompactList}\small\item\em Get the map of reservoirs. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classStation}{Station}} $\ast$ $>$ \mbox{\hyperlink{classFileReader_a3927351f4d147cae17dd017a10137266}{get\+Stations}} ()
+\begin{DoxyCompactList}\small\item\em Get the map of stations. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classCity}{City}} $\ast$ $>$ \mbox{\hyperlink{classFileReader_ad3551d37f9d471e0d9b4ec07ab4aed95}{get\+Cities}} ()
+\begin{DoxyCompactList}\small\item\em Get the map of cities. \end{DoxyCompactList}\item 
+Graph$<$ string $>$ \mbox{\hyperlink{classFileReader_a747424e756f189a4e4c78d24cd41d6e9}{get\+Grafo}} ()
+\begin{DoxyCompactList}\small\item\em Get the graph representing the network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileReader_ad8a7470d0f949c1fef3e873454596ef7}{Setup}} ()
+\begin{DoxyCompactList}\small\item\em Set up the graph for the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFileReader_ac59a7e87847f7f38f05364d6d7eecfb0}\label{classFileReader_ac59a7e87847f7f38f05364d6d7eecfb0}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classReservoir}{Reservoir}} $\ast$ $>$ {\bfseries reservoirs}
+\item 
+\mbox{\Hypertarget{classFileReader_a38092356dc8c34f1e17d6a02d1dddd98}\label{classFileReader_a38092356dc8c34f1e17d6a02d1dddd98}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classStation}{Station}} $\ast$ $>$ {\bfseries stations}
+\item 
+\mbox{\Hypertarget{classFileReader_a4c4c33bc8a4d2d7e07e780404daac024}\label{classFileReader_a4c4c33bc8a4d2d7e07e780404daac024}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classCity}{City}} $\ast$ $>$ {\bfseries cities}
+\item 
+\mbox{\Hypertarget{classFileReader_a591424b7b28fcbba12d24171913e9689}\label{classFileReader_a591424b7b28fcbba12d24171913e9689}} 
+Graph$<$ string $>$ {\bfseries grafo}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class responsible for reading data from files and setting up a graph for the Edmonds-\/\+Karp algorithm. 
+
+\mbox{\hyperlink{classFileReader}{File\+Reader}} reads data from C\+SV files containing information about reservoirs, stations, cities, and pipes. It constructs a graph representing the network and sets it up for finding the maximum flow using the Edmonds-\/\+Karp algorithm. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFileReader_ad3551d37f9d471e0d9b4ec07ab4aed95}\label{classFileReader_ad3551d37f9d471e0d9b4ec07ab4aed95}} 
+\index{FileReader@{FileReader}!getCities@{getCities}}
+\index{getCities@{getCities}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{getCities()}{getCities()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{classCity}{City}} $\ast$ $>$ File\+Reader\+::get\+Cities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the map of cities. 
+
+\begin{DoxyReturn}{Returns}
+An unordered\+\_\+map containing city objects. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFileReader_a747424e756f189a4e4c78d24cd41d6e9}\label{classFileReader_a747424e756f189a4e4c78d24cd41d6e9}} 
+\index{FileReader@{FileReader}!getGrafo@{getGrafo}}
+\index{getGrafo@{getGrafo}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{getGrafo()}{getGrafo()}}
+{\footnotesize\ttfamily Graph$<$ string $>$ File\+Reader\+::get\+Grafo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the graph representing the network. 
+
+\begin{DoxyReturn}{Returns}
+A Graph object representing the network. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFileReader_a2c2498aafb2f4bee6123b148aee30bae}\label{classFileReader_a2c2498aafb2f4bee6123b148aee30bae}} 
+\index{FileReader@{FileReader}!getReservoirs@{getReservoirs}}
+\index{getReservoirs@{getReservoirs}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{getReservoirs()}{getReservoirs()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{classReservoir}{Reservoir}} $\ast$ $>$ File\+Reader\+::get\+Reservoirs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the map of reservoirs. 
+
+\begin{DoxyReturn}{Returns}
+An unordered\+\_\+map containing reservoir objects. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFileReader_a3927351f4d147cae17dd017a10137266}\label{classFileReader_a3927351f4d147cae17dd017a10137266}} 
+\index{FileReader@{FileReader}!getStations@{getStations}}
+\index{getStations@{getStations}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{getStations()}{getStations()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{classStation}{Station}} $\ast$ $>$ File\+Reader\+::get\+Stations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the map of stations. 
+
+\begin{DoxyReturn}{Returns}
+An unordered\+\_\+map containing station objects. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFileReader_a1036120d4474f706ec7faab43f2468dc}\label{classFileReader_a1036120d4474f706ec7faab43f2468dc}} 
+\index{FileReader@{FileReader}!read@{read}}
+\index{read@{read}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void File\+Reader\+::read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read all data from C\+SV files. 
+
+Calls all read functions to read data from respective files. @complexity O(n). \mbox{\Hypertarget{classFileReader_afada7a97ce11e4908e7d0fab1296aebe}\label{classFileReader_afada7a97ce11e4908e7d0fab1296aebe}} 
+\index{FileReader@{FileReader}!readCities@{readCities}}
+\index{readCities@{readCities}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{readCities()}{readCities()}}
+{\footnotesize\ttfamily void File\+Reader\+::read\+Cities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read city data from a C\+SV file. 
+
+Reads city data from a C\+SV file and constructs \mbox{\hyperlink{classCity}{City}} objects. @complexity O(n). \mbox{\Hypertarget{classFileReader_a8172812259e675b81e88695d6d020916}\label{classFileReader_a8172812259e675b81e88695d6d020916}} 
+\index{FileReader@{FileReader}!readPipes@{readPipes}}
+\index{readPipes@{readPipes}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{readPipes()}{readPipes()}}
+{\footnotesize\ttfamily void File\+Reader\+::read\+Pipes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read pipe data from a C\+SV file. 
+
+Reads pipe data from a C\+SV file and constructs edges in the graph. @complexity O(n). \mbox{\Hypertarget{classFileReader_af2ed3daef69a13dea2ff2d0da1dfeb92}\label{classFileReader_af2ed3daef69a13dea2ff2d0da1dfeb92}} 
+\index{FileReader@{FileReader}!readReservoirs@{readReservoirs}}
+\index{readReservoirs@{readReservoirs}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{readReservoirs()}{readReservoirs()}}
+{\footnotesize\ttfamily void File\+Reader\+::read\+Reservoirs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read reservoir data from a C\+SV file. 
+
+Reads reservoir data from a C\+SV file and constructs \mbox{\hyperlink{classReservoir}{Reservoir}} objects. @complexity O(n). \mbox{\Hypertarget{classFileReader_a6fc88fef38e7e71b0c00c842ef166413}\label{classFileReader_a6fc88fef38e7e71b0c00c842ef166413}} 
+\index{FileReader@{FileReader}!readStations@{readStations}}
+\index{readStations@{readStations}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{readStations()}{readStations()}}
+{\footnotesize\ttfamily void File\+Reader\+::read\+Stations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read station data from a C\+SV file. 
+
+Reads station data from a C\+SV file and constructs \mbox{\hyperlink{classStation}{Station}} objects. @complexity O(n). \mbox{\Hypertarget{classFileReader_ad8a7470d0f949c1fef3e873454596ef7}\label{classFileReader_ad8a7470d0f949c1fef3e873454596ef7}} 
+\index{FileReader@{FileReader}!Setup@{Setup}}
+\index{Setup@{Setup}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{Setup()}{Setup()}}
+{\footnotesize\ttfamily void File\+Reader\+::\+Setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set up the graph for the Edmonds-\/\+Karp algorithm. 
+
+Sets up the graph for finding the maximum flow using the Edmonds-\/\+Karp algorithm. Constructs main source and main target vertices, adds edges, calculates maximum flow, and writes the output to a C\+SV file. @complexity O(\+V $\ast$ E$^\wedge$2) where V equals the number of vertexes and E the number of edges in the graph. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/File\+Reader.\+h\item 
+src/File\+Reader.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,148 @@
+\hypertarget{classMenu}{}\doxysection{Menu Class Reference}
+\label{classMenu}\index{Menu@{Menu}}
+
+
+Collaboration diagram for Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{classMenu__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMenu_ad466dd83355124a6ed958430450bfe94}\label{classMenu_ad466dd83355124a6ed958430450bfe94}} 
+\mbox{\hyperlink{classMenu_ad466dd83355124a6ed958430450bfe94}{Menu}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classMenu}{Menu}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a35656cd130e24d69383a5c9d0a73a38c}{run}} ()
+\begin{DoxyCompactList}\small\item\em Run the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_aef9edee86d2ea460606361c92e061583}{main\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Display the main menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_aff07796b623b31c420b172cf3b57006e}{Max\+Flow\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Display the menu for finding maximum water flow. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a66f5244283b33e5d926ce20ce48becde}{All\+\_\+\+Cities}} ()
+\begin{DoxyCompactList}\small\item\em Display information about the flow of all cities. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMenu_acf4db64e542f486dc66d9c345ba354d8}\label{classMenu_acf4db64e542f486dc66d9c345ba354d8}} 
+void \mbox{\hyperlink{classMenu_acf4db64e542f486dc66d9c345ba354d8}{S\+Scity}} (string code)
+\begin{DoxyCompactList}\small\item\em Display information about the flow of the city selected. @complexity O(1). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMenu_a4ee1004831fb9820c702898eacc61cdd}\label{classMenu_a4ee1004831fb9820c702898eacc61cdd}} 
+void \mbox{\hyperlink{classMenu_a4ee1004831fb9820c702898eacc61cdd}{Total}} ()
+\begin{DoxyCompactList}\small\item\em Display the total flow of all cities. @complexity O(n) where n equals the number of cities. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMenu_a434cd288b475c553d74a48b84f6205ec}\label{classMenu_a434cd288b475c553d74a48b84f6205ec}} 
+void \mbox{\hyperlink{classMenu_a434cd288b475c553d74a48b84f6205ec}{Verify\+Flow}} ()
+\begin{DoxyCompactList}\small\item\em Verify water supply to each city and the deficit with the demand. @complexity O(n) where n equals the number of cities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a79d35fc8585529fab98be61e7c4b687d}{Reservoir\+\_\+\+Failure}} (string code)
+\begin{DoxyCompactList}\small\item\em Simulate reservoir failure and display its impact. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a7741cefc24699f813885051a3e37d608}{Station\+\_\+\+Failure}} (string code)
+\begin{DoxyCompactList}\small\item\em Simulate station failure and display its impact. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_ad6c64e32356386944c5fe1efd8938359}{Pipe\+\_\+\+Failture}} (string code, string code\+\_\+dest)
+\begin{DoxyCompactList}\small\item\em Simulate pipe failure and display its impact. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMenu_a676491640499977a2a205f54db1aac51}\label{classMenu_a676491640499977a2a205f54db1aac51}} 
+\mbox{\hyperlink{classFileReader}{File\+Reader}} {\bfseries data}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMenu_a66f5244283b33e5d926ce20ce48becde}\label{classMenu_a66f5244283b33e5d926ce20ce48becde}} 
+\index{Menu@{Menu}!All\_Cities@{All\_Cities}}
+\index{All\_Cities@{All\_Cities}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{All\_Cities()}{All\_Cities()}}
+{\footnotesize\ttfamily void Menu\+::\+All\+\_\+\+Cities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display information about the flow of all cities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the city to display information about. @complexity O(n) where n equals the number of cities. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMenu_aef9edee86d2ea460606361c92e061583}\label{classMenu_aef9edee86d2ea460606361c92e061583}} 
+\index{Menu@{Menu}!mainMenu@{mainMenu}}
+\index{mainMenu@{mainMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{mainMenu()}{mainMenu()}}
+{\footnotesize\ttfamily void Menu\+::main\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display the main menu. 
+
+Provides options for different operations such as finding maximum flow, verifying water supply, etc. \mbox{\Hypertarget{classMenu_aff07796b623b31c420b172cf3b57006e}\label{classMenu_aff07796b623b31c420b172cf3b57006e}} 
+\index{Menu@{Menu}!MaxFlowMenu@{MaxFlowMenu}}
+\index{MaxFlowMenu@{MaxFlowMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{MaxFlowMenu()}{MaxFlowMenu()}}
+{\footnotesize\ttfamily void Menu\+::\+Max\+Flow\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display the menu for finding maximum water flow. 
+
+Provides options to select specific cities, view all cities, or view total flow. \mbox{\Hypertarget{classMenu_ad6c64e32356386944c5fe1efd8938359}\label{classMenu_ad6c64e32356386944c5fe1efd8938359}} 
+\index{Menu@{Menu}!Pipe\_Failture@{Pipe\_Failture}}
+\index{Pipe\_Failture@{Pipe\_Failture}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Pipe\_Failture()}{Pipe\_Failture()}}
+{\footnotesize\ttfamily void Menu\+::\+Pipe\+\_\+\+Failture (\begin{DoxyParamCaption}\item[{string}]{code,  }\item[{string}]{code\+\_\+dest }\end{DoxyParamCaption})}
+
+
+
+Simulate pipe failure and display its impact. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The source code of the pipe that failed. \\
+\hline
+{\em code\+\_\+dest} & The destination code of the pipe that failed. @complexity O(\+V $\ast$ E$^\wedge$2) where V equals the number of vertexes and E the number of edges in the graph. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMenu_a79d35fc8585529fab98be61e7c4b687d}\label{classMenu_a79d35fc8585529fab98be61e7c4b687d}} 
+\index{Menu@{Menu}!Reservoir\_Failure@{Reservoir\_Failure}}
+\index{Reservoir\_Failure@{Reservoir\_Failure}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Reservoir\_Failure()}{Reservoir\_Failure()}}
+{\footnotesize\ttfamily void Menu\+::\+Reservoir\+\_\+\+Failure (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})}
+
+
+
+Simulate reservoir failure and display its impact. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the reservoir that failed. @complexity O(\+V $\ast$ E$^\wedge$2) where V equals the number of vertexes and E the number of edges in the graph. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMenu_a35656cd130e24d69383a5c9d0a73a38c}\label{classMenu_a35656cd130e24d69383a5c9d0a73a38c}} 
+\index{Menu@{Menu}!run@{run}}
+\index{run@{run}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Menu\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run the menu. 
+
+Reads data, sets up the system, and displays the main menu. \mbox{\Hypertarget{classMenu_a7741cefc24699f813885051a3e37d608}\label{classMenu_a7741cefc24699f813885051a3e37d608}} 
+\index{Menu@{Menu}!Station\_Failure@{Station\_Failure}}
+\index{Station\_Failure@{Station\_Failure}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Station\_Failure()}{Station\_Failure()}}
+{\footnotesize\ttfamily void Menu\+::\+Station\+\_\+\+Failure (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})}
+
+
+
+Simulate station failure and display its impact. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the station that failed. @complexity O(\+V $\ast$ E$^\wedge$2) where V equals the number of vertexes and E the number of edges in the graph. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Menu.\+h\item 
+src/Menu.\+cpp\end{DoxyCompactItemize}

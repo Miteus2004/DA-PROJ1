@@ -4,7 +4,14 @@
 #include "../data_structures/Graph.h"
 
 
-// Function to test the given vertex 'w' and visit it if conditions are met
+/**
+ * @brief Test the given vertex 'w' and visit it if conditions are met.
+ * @param q Reference to the queue of vertices.
+ * @param e Pointer to the edge.
+ * @param w Pointer to the vertex.
+ * @param residual Residual capacity.
+ * @complexity O(1).
+ */
 inline void testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Vertex<string> *w, double residual) {
 // Check if the vertex 'w' is not visited and there is residual capacity
     if (! w->isVisited() && residual > 0) {
@@ -14,7 +21,15 @@ inline void testAndVisit(std::queue< Vertex<string>*> &q, Edge<string> *e, Verte
         q.push(w);
     }
 }
-// Function to find an augmenting path using Breadth-First Search
+
+/**
+ * @brief Find an augmenting path using Breadth-First Search.
+ * @param g Reference to the graph.
+ * @param s Pointer to the source vertex.
+ * @param t Pointer to the target vertex.
+ * @return True if an augmenting path is found, false otherwise.
+ * @complexity O(V + E) where V equals the number of vertexes and E the number of edges in the graph.
+ */
 inline bool findAugmentingPath(Graph<string>& g, Vertex<string> *s, Vertex<string> *t) {
 // Mark all vertices as not visited
     for(auto v : g.getVertexSet()) {
@@ -41,10 +56,13 @@ inline bool findAugmentingPath(Graph<string>& g, Vertex<string> *s, Vertex<strin
     return t->isVisited();
 }
 
-
-
-
-
+/**
+ * @brief Find the minimum residual capacity along the path.
+ * @param s Pointer to the source vertex.
+ * @param t Pointer to the target vertex.
+ * @return Minimum residual capacity.
+ * @complexity O(V) where V equals the number of vertexes in the graph.
+ */
 inline double findMinResidualAlongPath(Vertex<string> *s, Vertex<string> *t) {
     double f = INF;
 // Traverse the augmenting path to find the minimum residual capacity
@@ -62,7 +80,14 @@ inline double findMinResidualAlongPath(Vertex<string> *s, Vertex<string> *t) {
 // Return the minimum residual capacity
     return f;
 }
-// Function to augment flow along the augmenting path with the given flow value
+
+/**
+ * @brief Augment flow along the augmenting path with the given flow value.
+ * @param s Pointer to the source vertex.
+ * @param t Pointer to the target vertex.
+ * @param f Flow value.
+ * @complexity O(V) where V equals the number of vertexes in the graph.
+ */
 inline void augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double f) {
 // Traverse the augmenting path and update the flow values accordingly
     for (auto v = t; v != s; ) {
@@ -79,7 +104,13 @@ inline void augmentFlowAlongPath(Vertex<string> *s, Vertex<string> *t, double f)
     }
 }
 
-
+/**
+ * @brief Implementation of the Edmonds-Karp algorithm for finding maximum flow in a graph.
+ * @param g Reference to the graph.
+ * @param source Source vertex identifier.
+ * @param target Target vertex identifier.
+ * @complexity O(V * E^2) where V equals the number of vertexes and E the number of edges in the graph.
+ */
 inline void edmondsKarp(Graph<string>& g, const string& source, const string& target) {
 // Find source and target vertices in the graph
     Vertex<string>* s = g.findVertex(source);

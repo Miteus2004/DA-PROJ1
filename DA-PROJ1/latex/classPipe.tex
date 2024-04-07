@@ -1,0 +1,115 @@
+\hypertarget{classPipe}{}\doxysection{Pipe Class Reference}
+\label{classPipe}\index{Pipe@{Pipe}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPipe_a391d5ec60dec8a6fbf0db297556a7683}{Pipe}} (string spa, string spb, unsigned int capacity, bool direction)
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classPipe}{Pipe}} class. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classPipe_af414d0353781ca2a755d6555043fc958}{get\+Src}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the starting point A of the pipe. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classPipe_a8b04940ece7f28efafcb9b311741bb3e}{get\+Dest}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the ending point B of the pipe. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classPipe_ae950ef5ba99283fb5515194ef24d53ef}{get\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the capacity of the pipe. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPipe_aa0ab4ac02c4bf80b6e2248bab6ef7908}{get\+Direction}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the direction of the flow through the pipe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPipe_ad28f3f30cd07dd33110ae3ab3735d62a}\label{classPipe_ad28f3f30cd07dd33110ae3ab3735d62a}} 
+string {\bfseries spa}
+\item 
+\mbox{\Hypertarget{classPipe_a98b84f29c33df288e5d71622a890f2fe}\label{classPipe_a98b84f29c33df288e5d71622a890f2fe}} 
+string {\bfseries spb}
+\item 
+\mbox{\Hypertarget{classPipe_a4dc2e8c2f0efbe90ff9f95f4a9c2dd08}\label{classPipe_a4dc2e8c2f0efbe90ff9f95f4a9c2dd08}} 
+unsigned int {\bfseries capacity}
+\item 
+\mbox{\Hypertarget{classPipe_a4cfb65cf1491e161fda21cdad50e1fe5}\label{classPipe_a4cfb65cf1491e161fda21cdad50e1fe5}} 
+bool {\bfseries direction}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPipe_a391d5ec60dec8a6fbf0db297556a7683}\label{classPipe_a391d5ec60dec8a6fbf0db297556a7683}} 
+\index{Pipe@{Pipe}!Pipe@{Pipe}}
+\index{Pipe@{Pipe}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{Pipe()}{Pipe()}}
+{\footnotesize\ttfamily Pipe\+::\+Pipe (\begin{DoxyParamCaption}\item[{string}]{spa,  }\item[{string}]{spb,  }\item[{unsigned int}]{capacity,  }\item[{bool}]{direction }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \mbox{\hyperlink{classPipe}{Pipe}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spa} & Starting point A of the pipe. \\
+\hline
+{\em spb} & Ending point B of the pipe. \\
+\hline
+{\em capacity} & Capacity of the pipe. \\
+\hline
+{\em direction} & If the flow that goes through the pipe only go one direction or both ways. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPipe_ae950ef5ba99283fb5515194ef24d53ef}\label{classPipe_ae950ef5ba99283fb5515194ef24d53ef}} 
+\index{Pipe@{Pipe}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily unsigned int Pipe\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the capacity of the pipe. 
+
+\begin{DoxyReturn}{Returns}
+Unsigned integer representing the capacity of the pipe. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPipe_a8b04940ece7f28efafcb9b311741bb3e}\label{classPipe_a8b04940ece7f28efafcb9b311741bb3e}} 
+\index{Pipe@{Pipe}!getDest@{getDest}}
+\index{getDest@{getDest}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{getDest()}{getDest()}}
+{\footnotesize\ttfamily string Pipe\+::get\+Dest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the ending point B of the pipe. 
+
+\begin{DoxyReturn}{Returns}
+String representing the ending point B. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPipe_aa0ab4ac02c4bf80b6e2248bab6ef7908}\label{classPipe_aa0ab4ac02c4bf80b6e2248bab6ef7908}} 
+\index{Pipe@{Pipe}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}}
+{\footnotesize\ttfamily bool Pipe\+::get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the direction of the flow through the pipe. 
+
+\begin{DoxyReturn}{Returns}
+Boolean indicating the direction of the flow (true for only going A to B, false for also going B to A). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPipe_af414d0353781ca2a755d6555043fc958}\label{classPipe_af414d0353781ca2a755d6555043fc958}} 
+\index{Pipe@{Pipe}!getSrc@{getSrc}}
+\index{getSrc@{getSrc}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{getSrc()}{getSrc()}}
+{\footnotesize\ttfamily string Pipe\+::get\+Src (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for the starting point A of the pipe. 
+
+\begin{DoxyReturn}{Returns}
+String representing the starting point A. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Pipe.\+h\item 
+src/Pipe.\+cpp\end{DoxyCompactItemize}
