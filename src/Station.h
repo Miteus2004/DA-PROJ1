@@ -3,11 +3,14 @@
 
 #include <iostream>
 #include <string>
-#include "Point.h"
 using namespace std;
-class Station : public Point {
+class Station {
+    unsigned int id;
+    string code;
 public:
     Station(unsigned int id, string code);
+    unsigned int getId();
+    string getCode();
 };
 
 #endif //DA_1_STATION_H

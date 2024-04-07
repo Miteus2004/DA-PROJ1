@@ -2,6 +2,7 @@
 #define DA_1_FILEREADER_H
 
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -13,7 +14,6 @@
 #include "Station.h"
 #include "City.h"
 #include "Pipe.h"
-#include "Point.h"
 using namespace std;
 
 class FileReader {
@@ -21,9 +21,9 @@ private:
     unordered_map<string, Reservoir*> reservoirs;
     unordered_map<string, Station*> stations;
     unordered_map<string, City*> cities;
-    unordered_map<string, Point*> Points;
-    Graph<Point> flow;
+    Graph<string> grafo;
 public:
+    FileReader();
     void readReservoirs();
     void readStations();
     void readCities();
@@ -32,8 +32,8 @@ public:
     unordered_map<string, Reservoir*> getReservoirs();
     unordered_map<string, Station*> getStations();
     unordered_map<string, City*> getCities();
-    unordered_map<string, Point*> getPoints();
-    Graph<Point> getflow();
+    Graph<string> getGrafo();
+    void Setup();
 };
 
 #endif //DA_1_FILEREADER_H

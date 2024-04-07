@@ -3,19 +3,22 @@
 
 #include <iostream>
 #include <string>
-#include "Point.h"
 
 using namespace std;
-class Reservoir : public Point{
+class Reservoir {
 private:
     string reservoir;
     string municipality;
+    unsigned int id;
+    string code;
     unsigned int maxDelivery;
 
 public:
     Reservoir(string reservoir, string municipality, unsigned int id, string code, unsigned int maxDelivery);
     string getReservoir();
     string getMunicipality();
+    unsigned int getId();
+    string getCode();
     unsigned int getMaxDelivery();
 };
 

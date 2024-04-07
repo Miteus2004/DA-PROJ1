@@ -1,7 +1,9 @@
 #include "FileReader.h"
+#include "Edmondskarp.h"
+FileReader::FileReader() {};
 
 void FileReader::readReservoirs() {
-    std::ifstream file("../Project1DataSetSmall/Reservoir_Madeira.csv");
+    std::ifstream file("../Project1DataSetSmall/Reservoirs_Madeira.csv");
 
     if(!file.is_open())
     {
@@ -26,8 +28,7 @@ void FileReader::readReservoirs() {
             auto reservoir = new Reservoir(name, municipality, stoi(id), code, stoi(maxDelivery));
 
             reservoirs[code] = reservoir;
-            Points[code] = reservoir;
-            flow.addVertex(reservoir);
+            grafo.addVertex(reservoir->getCode());
         }
     }
 }
@@ -56,8 +57,7 @@ void FileReader::readStations()
             auto station = new Station(stoi(id),code);
 
             stations[code] = station;
-            Points[code] = station;
-            flow.addVertex(station);
+            grafo.addVertex(station->getCode());
         }
     }
 }
@@ -88,8 +88,7 @@ void FileReader::readCities() {
             auto city = new City(name, stoi(id), code, stoi(demand), stoi(population));
 
             cities[code] = city;
-            Points[code] = city;
-            flow.addVertex(city);
+            grafo.addVertex(city->getCode());
         }
     }
 }
@@ -117,10 +116,9 @@ void FileReader::readPipes() {
             getline(ss, capacity, ',');
             getline(ss, direction, '\r');
 
+            grafo.addEdge(source, destination, stoi(capacity));
             if (direction == "0")
-                flow.addBidirectionalEdge(Points[source], Points[destination], stoi(capacity));
-            else
-                flow.addEdge(Points[source], Points[destination], stoi(capacity));
+                grafo.addEdge(destination, source, stoi(capacity));
         }
     }
 }
@@ -143,9 +141,37 @@ unordered_map<string, Station*> FileReader::getStations() {
 unordered_map<string, City*> FileReader::getCities() {
     return cities;
 }
-unordered_map<string, Point*> FileReader::getPoints() {
-    return Points;
+
+Graph<string> FileReader::getGrafo() {
+    return grafo;
 }
-Graph<Point> FileReader::getflow() {
-    return flow;
+
+void FileReader::Setup() {
+    Reservoir mainSourceCode("mainSource", "", 0, "mainSrc", 0);
+    City mainTargetCode ("mainTarget",0,"mainTarg",0,0);
+    grafo.addVertex(mainSourceCode.getCode());
+    grafo.addVertex(mainTargetCode.getCode());
+
+    for (auto& wr : reservoirs) {
+        auto it = grafo.findVertex(wr.first);
+        grafo.addEdge(mainSourceCode.getCode(), wr.first, wr.second->getMaxDelivery());
+    }
+    for (auto& c : cities) {
+        auto it = grafo.findVertex(c.first);
+        grafo.addEdge(c.first, mainTargetCode.getCode(), c.second->getDemand());
+    }
+    edmondsKarp(grafo, mainSourceCode.getCode(), mainTargetCode.getCode());
+
+    std::ofstream file("../DA-PROJ1/max_flow_output.csv", std::ios::trunc);
+    std::ofstream file2("../DA-PROJ1/max_flow_output.csv", std::ios::app);
+    file2 << setw(12) << "CityCode" << "," << "Max Flow" << std::endl;
+
+    for (auto v : grafo.getVertexSet()){
+        if (v->getInfo()[0] == 'm'){
+            for (auto e : v->getIncoming()){
+                cities.at(e->getOrig()->getInfo())->setMaxFlow(e->getFlow());
+                file2 << e->getOrig()->getInfo() << "," << cities.at(e->getOrig()->getInfo())->getMaxFlow() << std::endl;
+            }
+        }
+    }
 }

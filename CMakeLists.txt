@@ -12,10 +12,8 @@ add_executable(DA_PROJ1 src/main.cpp
         src/Menu.h
         src/Pipe.cpp
         src/Pipe.h
-        src/Point.cpp
-        src/Point.h
         src/Reservoir.cpp
         src/Reservoir.h
         src/Station.cpp
         src/Station.h
-        src/EdmondsKarp.h)
+)

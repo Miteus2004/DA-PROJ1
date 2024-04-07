@@ -79,12 +79,6 @@ build CMakeFiles/DA_PROJ1.dir/src/Pipe.cpp.o: CXX_COMPILER__DA_PROJ1_unscanned_D
   OBJECT_DIR = CMakeFiles/DA_PROJ1.dir
   OBJECT_FILE_DIR = CMakeFiles/DA_PROJ1.dir/src
 
-build CMakeFiles/DA_PROJ1.dir/src/Point.cpp.o: CXX_COMPILER__DA_PROJ1_unscanned_Debug /home/miguel/Desktop/DA/DA-PROJ1/src/Point.cpp || cmake_object_order_depends_target_DA_PROJ1
-  DEP_FILE = CMakeFiles/DA_PROJ1.dir/src/Point.cpp.o.d
-  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/DA_PROJ1.dir
-  OBJECT_FILE_DIR = CMakeFiles/DA_PROJ1.dir/src
-
 build CMakeFiles/DA_PROJ1.dir/src/Reservoir.cpp.o: CXX_COMPILER__DA_PROJ1_unscanned_Debug /home/miguel/Desktop/DA/DA-PROJ1/src/Reservoir.cpp || cmake_object_order_depends_target_DA_PROJ1
   DEP_FILE = CMakeFiles/DA_PROJ1.dir/src/Reservoir.cpp.o.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
@@ -105,7 +99,7 @@ build CMakeFiles/DA_PROJ1.dir/src/Station.cpp.o: CXX_COMPILER__DA_PROJ1_unscanne
 #############################################
 # Link the executable DA_PROJ1
 
-build DA_PROJ1: CXX_EXECUTABLE_LINKER__DA_PROJ1_Debug CMakeFiles/DA_PROJ1.dir/src/main.cpp.o CMakeFiles/DA_PROJ1.dir/src/City.cpp.o CMakeFiles/DA_PROJ1.dir/src/FileReader.cpp.o CMakeFiles/DA_PROJ1.dir/src/Menu.cpp.o CMakeFiles/DA_PROJ1.dir/src/Pipe.cpp.o CMakeFiles/DA_PROJ1.dir/src/Point.cpp.o CMakeFiles/DA_PROJ1.dir/src/Reservoir.cpp.o CMakeFiles/DA_PROJ1.dir/src/Station.cpp.o
+build DA_PROJ1: CXX_EXECUTABLE_LINKER__DA_PROJ1_Debug CMakeFiles/DA_PROJ1.dir/src/main.cpp.o CMakeFiles/DA_PROJ1.dir/src/City.cpp.o CMakeFiles/DA_PROJ1.dir/src/FileReader.cpp.o CMakeFiles/DA_PROJ1.dir/src/Menu.cpp.o CMakeFiles/DA_PROJ1.dir/src/Pipe.cpp.o CMakeFiles/DA_PROJ1.dir/src/Reservoir.cpp.o CMakeFiles/DA_PROJ1.dir/src/Station.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/DA_PROJ1.dir
   POST_BUILD = :
