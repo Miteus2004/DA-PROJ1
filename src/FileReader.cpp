@@ -3,7 +3,7 @@
 FileReader::FileReader() {};
 
 void FileReader::readReservoirs() {
-    std::ifstream file("../Project1DataSetSmall/Reservoirs_Madeira.csv");
+    std::ifstream file("../Project1LargeDataSet/Reservoir.csv");
 
     if(!file.is_open())
     {
@@ -35,7 +35,7 @@ void FileReader::readReservoirs() {
 
 void FileReader::readStations()
 {
-    std::ifstream file("../Project1DataSetSmall/Stations_Madeira.csv");
+    std::ifstream file("../Project1LargeDataSet/Stations.csv");
 
     if(!file.is_open())
     {
@@ -63,7 +63,7 @@ void FileReader::readStations()
 }
 
 void FileReader::readCities() {
-    std::ifstream file("../Project1DataSetSmall/Cities_Madeira.csv");
+    std::ifstream file("../Project1LargeDataSet/Cities.csv");
 
     if(!file.is_open())
     {
@@ -95,7 +95,7 @@ void FileReader::readCities() {
 
 
 void FileReader::readPipes() {
-    std::ifstream file("../Project1DataSetSmall/Pipes_Madeira.csv");
+    std::ifstream file("../Project1LargeDataSet/Pipes.csv");
 
     if(!file.is_open())
     {
@@ -162,15 +162,10 @@ void FileReader::Setup() {
     }
     edmondsKarp(grafo, mainSourceCode.getCode(), mainTargetCode.getCode());
 
-    std::ofstream file("../DA-PROJ1/max_flow_output.csv", std::ios::trunc);
-    std::ofstream file2("../DA-PROJ1/max_flow_output.csv", std::ios::app);
-    file2 << setw(12) << "CityCode" << "," << "Max Flow" << std::endl;
-
     for (auto v : grafo.getVertexSet()){
         if (v->getInfo()[0] == 'm'){
             for (auto e : v->getIncoming()){
                 cities.at(e->getOrig()->getInfo())->setMaxFlow(e->getFlow());
-                file2 << e->getOrig()->getInfo() << "," << cities.at(e->getOrig()->getInfo())->getMaxFlow() << std::endl;
             }
         }
     }
